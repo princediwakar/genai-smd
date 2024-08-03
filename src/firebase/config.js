@@ -1,5 +1,7 @@
+// src/firebase/config.js
+
 import { initializeApp } from 'firebase/app';
-import { getAuth, GoogleAuthProvider, signInWithPopup, sendSignInLinkToEmail } from 'firebase/auth';
+import { getAuth, GoogleAuthProvider, isSignInWithEmailLink, signInWithEmailLink, sendSignInLinkToEmail, signInWithPopup } from 'firebase/auth';
 import { getFirestore } from 'firebase/firestore';
 
 const firebaseConfig = {
@@ -12,10 +14,11 @@ const firebaseConfig = {
   measurementId: "G-CYQ2YMK4GZ"
 };
 
-// Initialize Firebase
+
 const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
 const auth = getAuth(app);
 const googleProvider = new GoogleAuthProvider();
+const db = getFirestore(app);
 
-export { db, auth, googleProvider, signInWithPopup, sendSignInLinkToEmail};
+export { auth, googleProvider, isSignInWithEmailLink, signInWithEmailLink, sendSignInLinkToEmail, signInWithPopup, firebaseConfig, db };
+
